@@ -1,0 +1,33 @@
+﻿@model bilgiyon_yazilim_ogrenci_takip_deneme.EntityLayer.Concrete.Student
+@{
+    ViewData["Title"] = "EditStudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Ogrenci Bilgi Duzenleme Sayfasi</h1>
+<br />
+@using (Html.BeginForm("EditStudent", "Student", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Ogrenci ID")
+        @Html.TextBoxFor(x => x.StudentID, new { @class = "form-control" })
+        <br /> <br />
+        @Html.Label("Ogrenci Adi")
+        @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        <br /> <br />
+        @Html.Label("Ogrenci Soyadi")
+        @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+        <br /> <br />
+        @Html.Label("Ogrenci Telefonu")
+        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+        <br /> <br />
+        @Html.Label("Ogrenci Adresi ")
+        @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+        <br /> <br />
+        @Html.Label("Ogrenci Sinifi")
+        @Html.TextBoxFor(x => x.Class, new { @class = "form-control" })
+        <br /> <br />
+        <button class="btn btn-info">Kaydet</button>
+    </div>
+}
+

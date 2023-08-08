@@ -1,0 +1,54 @@
+﻿@using bilgiyon_yazilim_ogrenci_takip_deneme.EntityLayer.Concrete;
+@model List<Student>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Adi</th>
+        <th>Soyadi</th>
+        <th>Telefon</th>
+        <th>Sinif</th>
+        <th>Adres</th> 
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.StudentID</th>
+            <td>@item.Name</td>
+            <td>@item.Surname</td>
+            <td>@item.Phone</td>
+            <td>@item.Class</td>
+            <td>@item.Address</td>
+            
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">Sil</button></td>
+            <div class="modal" id="Modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Silme islemi onayi</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Silme islemini gerceklestirmek istediginize emin misiniz?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="/Student/DeleteStudent/@item.StudentID" class="btn btn-danger">Eminim</a>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Geri don</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <td><a href="/Student/EditStudent/@item.StudentID" class="btn btn-primary">Guncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Student/AddStudent" class="btn btn-info">Yeni Ogrenci Ekleme</a>
+
+
+
