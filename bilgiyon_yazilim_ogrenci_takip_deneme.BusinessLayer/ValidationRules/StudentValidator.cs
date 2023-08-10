@@ -13,16 +13,21 @@ namespace bilgiyon_yazilim_ogrenci_takip_deneme.BusinessLayer.ValidationRules
         public StudentValidator() 
         {
             //Isim kurallari
-            RuleFor(x=>x.Name).NotEmpty().WithMessage("Bu alan bos gecilemez.");
-            RuleFor(x=>x.Name).MinimumLength(2).WithMessage("Lutfen en az 2 karakter girisi yapiniz.");
+            RuleFor(x=>x.Name).NotEmpty().WithMessage("Bu alan bos gecilemez.")
+            .MinimumLength(2).WithMessage("Lutfen en az 2 karakter girisi yapiniz.")
+            .MaximumLength(50).WithMessage("Lutfen en fazla 50 karakter giriniz");
+           
 
 
             //Soyad kurallari
-            RuleFor(x=>x.Surname).NotEmpty().WithMessage("Bu alan bos gecilemez.");
-            
+            RuleFor(x=>x.Surname).NotEmpty().WithMessage("Bu alan bos gecilemez.")
+            .MinimumLength(2).WithMessage("Lutfen en az 2 karakter girisi yapiniz.")
+            .MaximumLength(50).WithMessage("Lutfen en fazla 50 karakter giriniz");
+
 
             //Adres kurallari
             RuleFor(x=>x.Address).NotEmpty().WithMessage("Bu alan bos gecilemez.");
+            RuleFor(x => x.Address).MaximumLength(200).WithMessage("En fazla 200 karakter giriniz.");
 
 
             ////Telefon kurallari
@@ -32,7 +37,8 @@ namespace bilgiyon_yazilim_ogrenci_takip_deneme.BusinessLayer.ValidationRules
 
 
             //Sinif kurallari
-            RuleFor(x => x.Class).NotEmpty().WithMessage("Bu alan bos gecilemez.");            
+            RuleFor(x => x.Class).NotEmpty().WithMessage("Bu alan bos gecilemez.")
+               .MaximumLength(4).WithMessage("En fazla 4 karakter giriniz.");            
         }
         private bool HasOnlyNumbers(string number)
         {

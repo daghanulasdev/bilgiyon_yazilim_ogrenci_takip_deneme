@@ -12,7 +12,8 @@ namespace bilgiyon_yazilim_ogrenci_takip_deneme.UI.Controllers
 {
 	public class StudentController : Controller
 	{
-		StudentManager studentManager = new StudentManager(new EfStudentDal());
+        StudentValidator sv = new StudentValidator();
+        StudentManager studentManager = new StudentManager(new EfStudentDal());
 		public IActionResult Index()
 		{
 			var studentvalues = studentManager.TGetList();
@@ -26,8 +27,8 @@ namespace bilgiyon_yazilim_ogrenci_takip_deneme.UI.Controllers
 		[HttpPost]
         public IActionResult AddStudent(Student p)
 		{
-			StudentValidator sv = new StudentValidator();
 			ValidationResult validationResult = sv.Validate(p);
+
 			if(validationResult.IsValid)
 			{
 				studentManager.TInsert(p);
@@ -58,8 +59,20 @@ namespace bilgiyon_yazilim_ogrenci_takip_deneme.UI.Controllers
 		[HttpPost]
 		public IActionResult EditStudent(Student p)
 		{
-			studentManager.TUpdate(p);
-			return RedirectToAction("Index");
+			ValidationResult validationResult = sv.Validate(p);
+			if(validationResult.IsValid) 
+			{
+				studentManager.TUpdate(p);
+				return RedirectToAction("Index");
+			}
+			else
+			{
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+			return View();
 		}
 	}
 }

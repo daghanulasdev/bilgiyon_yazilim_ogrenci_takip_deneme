@@ -4,6 +4,17 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@functions {
+    public static string FormatPhoneNumber(string number)
+    {
+        if (number.Length != 11)
+        {
+            return number; // Format dışında bir numara döndür
+        }
+        return $"{number.Substring(0, 4)}-{number.Substring(4, 3)}-{number.Substring(7, 4)}";
+    }
+}
+
 <br />
 <table class="table table-bordered">
     <tr>
@@ -20,7 +31,7 @@
             <th>@item.StudentID</th>
             <td>@item.Name</td>
             <td>@item.Surname</td>
-            <td>@item.Phone</td>
+            <td>@FormatPhoneNumber(item.Phone)</td>
             <td>@item.Class</td>
             <td>@item.Address</td>
             
