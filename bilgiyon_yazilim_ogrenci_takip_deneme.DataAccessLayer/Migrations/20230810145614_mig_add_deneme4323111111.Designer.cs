@@ -11,8 +11,8 @@ using bilgiyon_yazilim_ogrenci_takip_deneme.DataAccessLayer.Concrete;
 namespace bilgiyon_yazilim_ogrenci_takip_deneme.DataAccessLayer.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230808120057_mig_add_deneme")]
-    partial class mig_add_deneme
+    [Migration("20230810145614_mig_add_deneme4323111111")]
+    partial class mig_add_deneme4323111111
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,24 +32,24 @@ namespace bilgiyon_yazilim_ogrenci_takip_deneme.DataAccessLayer.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentID"), 1L, 1);
 
                     b.Property<string>("Address")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Class")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(4)
+                        .HasColumnType("nvarchar(4)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(11)
+                        .HasColumnType("nvarchar(11)");
 
                     b.Property<string>("Surname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("StudentID");
 

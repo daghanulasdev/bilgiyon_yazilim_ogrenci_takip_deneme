@@ -11,18 +11,23 @@
     <div class="form-group">
         @Html.Label("Ogrenci Adi")
         @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.Name)
         <br /> <br />
         @Html.Label("Ogrenci Soyadi")
         @Html.TextBoxFor(x => x.Surname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.Surname)
         <br /> <br />
         @Html.Label("Ogrenci Telefonu")
-        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+        @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @placeholder ="05551234455" })
+        @Html.ValidationMessageFor(x=>x.Phone)
         <br /> <br />
         @Html.Label("Ogrenci Adresi ")
         @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.Address)
         <br /> <br />
         @Html.Label("Ogrenci Sinifi")
         @Html.TextBoxFor(x => x.Class, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x=>x.Class)
         <br /> <br />
         <button class="btn btn-info">Kaydet</button>
     </div>

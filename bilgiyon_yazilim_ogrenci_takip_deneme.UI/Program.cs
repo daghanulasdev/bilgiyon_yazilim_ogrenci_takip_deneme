@@ -1,3 +1,5 @@
+using bilgiyon_yazilim_ogrenci_takip_deneme.DataAccessLayer.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
